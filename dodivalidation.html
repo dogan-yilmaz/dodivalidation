@@ -1,219 +1,194 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DodiValidation Örneği</title>
     <style>
-        .DodiError {
-            color: red;
-            font-size: 12px;
-            margin-top: 5px;
-        }
-
-        .DodiAlert {
-            border:1px solid red;
-            background-color: rgba(0,0,0,0.1);
-        }
+        .DodiError { color: red; font-size: 12px; margin-top: 5px; }
+        .DodiAlert { border-color: red; }
     </style>
 </head>
-
 <body>
     <form name="loginform" id="loginform" action="/action_page.php" onsubmit="return DodiValidation('loginform')"
-        method="post">
-        <div class="FormContainer">
-            <div class="FormLine">
-                <input type="text" class="DodiValidation" OnlyNumb="1" placeholder="Adınız Soyadınız*"
-                    dodi-required-text="Adınız Soyadınız alanını boş bırakılamaz">
-            </div>
-            <div class="FormLine">
-                <input type="text" class="DodiValidation" placeholder="TC Kimlik Numarası*" minlength="11"
-                    maxlength="11" dodi-length-text="TC Kimlik Numarası en az 11 haneli olmalıdır"
-                    dodi-tc-text="Lütfen geçerli bir TC Kimlik Numarası giriniz"
-                    dodi-required-text="TC Kimlik Numarası alanını boş bırakılamaz">
-            </div>
-            <div class="FormLine">
-                <input type="text" class="DodiValidation" placeholder="Telefon Numarası"
-                    dodi-required-text="Telefon Numarası alanını boş bırakılamaz" PhoneFormat="1" minlength="15"
-                    maxlength="15" dodi-length-text="Telefon Numarası alanını 10 haneli v başında sıfır olmalıdır">
-            </div>
-            <div class="FormLine">
-                <input type="email" class="DodiValidation" placeholder="E-Posta Adresiniz"
-                    dodi-email-text="Lütfen mail adresinizi doğru giriniz"
-                    dodi-required-text="Email alanını boş bırakılamaz">
-            </div>
-            <div class="FormLine">
-                <select class="DodiValidation" dodi-required-text="Lütfen bir seçenek belirleyiniz"
-                    dodi-select-validate="0">
-                    <option value="0">Konu Seçiniz</option>
-                    <option value="1">İstanbul</option>
-                    <option value="2">Ankara</option>
-                    <option value="3">İzmir</option>
-                </select>
-            </div>
-            <div class="FormLine">
-                <textarea class="DodiValidation" placeholder="Açıklama*"
-                    dodi-required-text="Açıklama alanını boş bırakılamaz"></textarea>
-            </div>
-            <div class="RememberMe">
-                <div class="ChackRadioContainer">
-                    <label for="singlecheck3">
-                        <input type="checkbox" class="DodiValidation" id="errorContainer" CheckCatch="errorContainer"
-                            dodi-required-text="işleme devam edebilmek için checkle">
-                        <span class="checkmark"></span>
-                        Beni hatırla</label>
+    method="post">
+    <div class="FormContainer">
+        <div class="FormLine">
+            <input type="text" class="DodiValidation" placeholder="Adınız Soyadınız*" dodi-required-text="Adınız Soyadınız alanını boş bırakılamaz">
+        </div>
 
-                </div>
-            </div>
-            <div id="checkbox-list" dodi-required-text="Please select at least one option">
-                <label>Checkbox List:</label>
-                <input type="checkbox" class="DodiValidation" name="checkbox-list" MultiCheckCatch="checkbox-list"
-                    value="option1"> Option 1
-                <input type="checkbox" class="DodiValidation" name="checkbox-list" MultiCheckCatch="checkbox-list"
-                    value="option2"> Option 2
-                <input type="checkbox" class="DodiValidation" name="checkbox-list" MultiCheckCatch="checkbox-list"
-                    value="option3"> Option 3
-            </div>
-            <div id="radio-list" dodi-required-text="Please select at least one option">
-                <label>Radio List:</label>
-                <input type="radio" name="radiolist" class="DodiValidation" value="option1" dodi-alert="radio-list">
-                Option 1
-                <input type="radio" name="radiolist" class="DodiValidation" value="option2" dodi-alert="radio-list">
-                Option 2
-                <input type="radio" name="radiolist" class="DodiValidation" value="option3" dodi-alert="radio-list">
-                Option 3
-            </div>
-            <div class="FormLine">
-                <input type="file" class="DodiValidation" dodi-required-text="Lütfen bir seçenek belirleyiniz"
-                    file-type="\.(png|jpg|jpeg|dmg)$" file-type-text="Lütfen yalnızca PDF veya DOCX dosyası yükleyin."
-                    max-file-size="1" max-file-size-text="Dosya boyutu en fazla 2 MB olabilir">
-            </div>
-            <div class="FormLine">
-                <input type="email" class="DodiValidation" placeholder="E-posta"
-                    dodi-email-text="Lütfen mail adresinizi doğru giriniz"
-                    dodi-required-text="Email alanını boş bırakılamaz">
-            </div>
-            <div class="FormLine position-relative">
-                <input type="password" dodi-repasword="1" placeholder="Şifre" class="DodiValidation PasswordLogin"
-                    dodi-required-text="Şifre alanını boş bırakılamaz" minlength="8"
-                    dodi-length-text="Şifreniz az 8 haneli olmalıdır">
-            </div>
-            <div class="FormLine position-relative">
-                <input type="password" dodi-repasword="2" placeholder="Şifre"
-                    dodi-repassword-text="Şifreler birbiri ile eşleşmiyor" class="DodiValidation PasswordLogin"
-                    dodi-required-text="Şifre alanını boş bırakılamaz" minlength="8"
-                    dodi-length-text="Şifreniz az 8 haneli olmalıdır">
-            </div>
-            <div class="d-flex justify-content-center">
-                <input type="submit" value="Giriş Yap" class="Btn Gray">
+        <div class="FormLine">
+            <input type="text" class="DodiValidation" placeholder="TC Kimlik Numarası*" minlength="11" maxlength="11" dodi-length-text="TC Kimlik Numarası en az 11 haneli olmalıdır" dodi-tc-text="Lütfen geçerli bir TC Kimlik Numarası giriniz" dodi-required-text="TC Kimlik Numarası alanını boş bırakılamaz">
+        </div>
+
+        <div class="FormLine">
+            <input type="text" class="DodiValidation" placeholder="Telefon Numarası" dodi-required-text="Telefon Numarası alanını boş bırakılamaz" PhoneFormat="1"  minlength="15" maxlength="15" dodi-length-text="Telefon Numarası alanını 10 haneli v başında sıfır olmalıdır">
+        </div>
+        <div class="FormLine">
+            <input type="email" class="DodiValidation" placeholder="E-Posta Adresiniz" dodi-email-text="Lütfen mail adresinizi doğru giriniz" dodi-required-text="Email alanını boş bırakılamaz">
+        </div>
+
+        <div class="FormLine">
+            <select class="DodiValidation" dodi-required-text="Lütfen bir seçenek belirleyiniz" dodi-select-validate="0">
+                <option value="0">Konu Seçiniz</option>
+                <option value="1">İstanbul</option>
+                <option value="2">Ankara</option>
+                <option value="3">İzmir</option>
+            </select>
+        </div>
+
+        <div class="FormLine">
+            <textarea class="DodiValidation" placeholder="Açıklama*" dodi-required-text="Açıklama alanını boş bırakılamaz"></textarea>
+        </div>
+
+        <div class="RememberMe">
+            <div class="ChackRadioContainer">
+                <label for="singlecheck3">
+                    <input type="checkbox" class="DodiValidation" id="errorContainer" CheckCatch="errorContainer" dodi-required-text="işleme devam edebilmek için checkle">
+                    <span class="checkmark"></span>
+                    Beni hatırla</label>
+
             </div>
         </div>
-    </form>
 
-    <hr />
 
-    <form name="loginform1" id="loginform1" action="/action_page.php" onsubmit="return DodiValidation('loginform1')"
-        method="post">
-        <div class="FormContainer">
-            <div class="FormLine">
-                <input type="text" OnlyText="1" class="DodiValidation" placeholder="Adınız Soyadınız*"
-                    dodi-required-text="Adınız Soyadınız alanını boş bırakılamaz">
-            </div>
-            <div class="FormLine">
-                <input type="text" class="DodiValidation" placeholder="TC Kimlik Numarası*" minlength="11"
-                    maxlength="11" dodi-length-text="TC Kimlik Numarası en az 11 haneli olmalıdır"
-                    dodi-tc-text="Lütfen geçerli bir TC Kimlik Numarası giriniz"
-                    dodi-required-text="TC Kimlik Numarası alanını boş bırakılamaz">
-            </div>
-            <div class="FormLine">
-                <input type="text" class="DodiValidation" placeholder="Telefon Numarası"
-                    dodi-required-text="Telefon Numarası alanını boş bırakılamaz" PhoneFormat="1" minlength="15"
-                    maxlength="15" dodi-length-text="Telefon Numarası alanını 10 haneli v başında sıfır olmalıdır">
-            </div>
-            <div class="FormLine">
-                <input type="email" class="DodiValidation" placeholder="E-Posta Adresiniz"
-                    dodi-email-text="Lütfen mail adresinizi doğru giriniz"
-                    dodi-required-text="Email alanını boş bırakılamaz">
-            </div>
-            <div class="FormLine">
-                <select class="DodiValidation" dodi-required-text="Lütfen bir seçenek belirleyiniz"
-                    dodi-select-validate="0">
-                    <option value="0">Konu Seçiniz</option>
-                    <option value="1">İstanbul</option>
-                    <option value="2">Ankara</option>
-                    <option value="3">İzmir</option>
-                </select>
-            </div>
-            <div class="FormLine">
-                <textarea class="DodiValidation" placeholder="Açıklama*"
-                    dodi-required-text="Açıklama alanını boş bırakılamaz"></textarea>
-            </div>
-            <div class="RememberMe">
-                <div class="ChackRadioContainer">
-                    <label for="errorContainer1">
-                        <input type="checkbox" class="DodiValidation" id="errorContainer1" CheckCatch="errorContainer1"
-                            dodi-required-text="işleme devam edebilmek için checkle">
-                        <span class="checkmark"></span>
-                        Beni hatırla</label>
-
-                </div>
-            </div>
-            <div id="checkbox-list1" dodi-required-text="Please select at least one option">
-                <label>Checkbox List:</label>
-                <input type="checkbox" class="DodiValidation" name="checkbox-list1" MultiCheckCatch="checkbox-list1"
-                    value="option4"> Option 1
-                <input type="checkbox" class="DodiValidation" name="checkbox-list1" MultiCheckCatch="checkbox-list1"
-                    value="option5"> Option 2
-                <input type="checkbox" class="DodiValidation" name="checkbox-list1" MultiCheckCatch="checkbox-list1"
-                    value="option6"> Option 3
-            </div>
-            <div id="radio-list1" dodi-required-text="Please select at least one option">
-                <label>Radio List:</label>
-                <input type="radio" name="radiolist1" class="DodiValidation" value="option4" dodi-alert="radio-list1">
-                Option 1
-                <input type="radio" name="radiolist1" class="DodiValidation" value="option5" dodi-alert="radio-list1">
-                Option 2
-                <input type="radio" name="radiolist1" class="DodiValidation" value="option6" dodi-alert="radio-list1">
-                Option 3
-            </div>
-            <div class="FormLine">
-                <input type="file" class="DodiValidation" dodi-required-text="Lütfen bir seçenek belirleyiniz"
-                    file-type="\.(png|jpg|jpeg|dmg)$" file-type-text="Lütfen yalnızca PDF veya DOCX dosyası yükleyin."
-                    max-file-size="1" max-file-size-text="Dosya boyutu en fazla 2 MB olabilir">
-            </div>
-            <div class="FormLine">
-                <input type="email" class="DodiValidation" placeholder="E-posta"
-                    dodi-email-text="Lütfen mail adresinizi doğru giriniz"
-                    dodi-required-text="Email alanını boş bırakılamaz">
-            </div>
-            <div>
-                <input type="date" class="DodiValidation" dodi-required-text="Tarih alanını boş bırakılamaz">
-            </div>
-            <hr />
-            <br />
-            <hr />
-            <input type="text" class="DodiValidation creditCard" maxlength="19" placeholder="0000 0000 0000 0000"
-                minlength="19" maxlength="19" dodi-length-text="Kredi Kartı Numarası en az 16 haneli olmalıdır"
-                dodi-required-text="Kredi Kartı alanını boş bırakılamaz">
-            <br />
-            <input type="text" class="DodiValidation expiryDate" minlength="5" maxlength="5" placeholder="MM/YY"
-                dodi-required-text="son kullanma tarihi alanını boş bırakılamaz"
-                dodi-length-text="son kullanma tarihi en az 4 haneli olmalıdır">
-                <br />
-                <input type="text" class="DodiValidation cvv" minlength="3" maxlength="3" placeholder="cvv"
-                    dodi-required-text="cvv alanını boş bırakılamaz"
-                    dodi-length-text="cvv en az 3 haneli olmalıdır">
-            <hr />
-            <br />
-            <hr />
-            <div class="d-flex justify-content-center">
-                <input type="submit" value="Giriş Yap" class="Btn Gray">
-            </div>
+        <div id="checkbox-list" dodi-required-text="Please select at least one option">
+            <label>Checkbox List:</label>
+            <input type="checkbox" class="DodiValidation" name="checkbox-list[1]" MultiCheckCatch="checkbox-list" value="option1"> Option 1
+            <input type="checkbox" class="DodiValidation" name="checkbox-list[2]" MultiCheckCatch="checkbox-list" value="option2"> Option 2
+            <input type="checkbox" class="DodiValidation" name="checkbox-list[3]" MultiCheckCatch="checkbox-list" value="option3"> Option 3
         </div>
-    </form>
-    <script src="dodivalidation.min.js"></script>
 
+        <div id="radio-list" dodi-required-text="Please select at least one option">
+            <label>Radio List:</label>
+            <input type="radio" name="radiolist" class="DodiValidation" value="option1" dodi-alert="radio-list"> Option 1
+            <input type="radio" name="radiolist" class="DodiValidation" value="option2" dodi-alert="radio-list"> Option 2
+            <input type="radio" name="radiolist" class="DodiValidation" value="option3" dodi-alert="radio-list"> Option 3
+        </div>
+
+       
+        <div class="FormLine">
+            <input type="file" class="DodiValidation" dodi-required-text="Lütfen bir seçenek belirleyiniz" 
+            file-type="\\.pdf|\\.docx|\\.dmg" file-type-text="Lütfen yalnızca PDF veya DOCX dosyası yükleyin."
+            max-file-size="1" max-file-size-text="Dosya boyutu en fazla 2 MB olabilir">
+        </div>
+
+
+        <div class="FormLine">
+            <input type="email" class="DodiValidation" placeholder="E-posta"
+                dodi-email-text="Lütfen mail adresinizi doğru giriniz"
+                dodi-required-text="Email alanını boş bırakılamaz">
+        </div>
+        <div class="FormLine position-relative">
+            <input type="password" dodi-repasword="1" placeholder="Şifre" class="DodiValidation PasswordLogin"
+                dodi-required-text="Şifre alanını boş bırakılamaz" minlength="8"
+                dodi-length-text="Şifreniz az 8 haneli olmalıdır">
+        </div>
+
+        <div class="FormLine position-relative">
+                <input type="password" dodi-repasword="2" placeholder="Şifre" dodi-repassword-text="Şifreler birbiri ile eşleşmiyor" class="DodiValidation PasswordLogin"
+                dodi-required-text="Şifre alanını boş bırakılamaz" minlength="8"
+                dodi-length-text="Şifreniz az 8 haneli olmalıdır">
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <input type="submit" value="Giriş Yap" class="Btn Gray">
+        </div>
+    </div>
+</form>
+
+<hr />
+
+<form name="loginform1" id="loginform1" action="/action_page.php" onsubmit="return DodiValidation('loginform1')"
+method="post">
+<div class="FormContainer">
+    <div class="FormLine">
+        <input type="text" class="DodiValidation" placeholder="Adınız Soyadınız*" dodi-required-text="Adınız Soyadınız alanını boş bırakılamaz">
+    </div>
+
+    <div class="FormLine">
+        <input type="text" class="DodiValidation" placeholder="TC Kimlik Numarası*" minlength="11" maxlength="11" dodi-length-text="TC Kimlik Numarası en az 11 haneli olmalıdır" dodi-tc-text="Lütfen geçerli bir TC Kimlik Numarası giriniz" dodi-required-text="TC Kimlik Numarası alanını boş bırakılamaz">
+    </div>
+
+    <div class="FormLine">
+        <input type="text" class="DodiValidation" placeholder="Telefon Numarası" dodi-required-text="Telefon Numarası alanını boş bırakılamaz" PhoneFormat="1"  minlength="15" maxlength="15" dodi-length-text="Telefon Numarası alanını 10 haneli v başında sıfır olmalıdır">
+    </div>
+    <div class="FormLine">
+        <input type="email" class="DodiValidation" placeholder="E-Posta Adresiniz" dodi-email-text="Lütfen mail adresinizi doğru giriniz" dodi-required-text="Email alanını boş bırakılamaz">
+    </div>
+
+    <div class="FormLine">
+        <select class="DodiValidation" dodi-required-text="Lütfen bir seçenek belirleyiniz" dodi-select-validate="0">
+            <option value="0">Konu Seçiniz</option>
+            <option value="1">İstanbul</option>
+            <option value="2">Ankara</option>
+            <option value="3">İzmir</option>
+        </select>
+    </div>
+
+    <div class="FormLine">
+        <textarea class="DodiValidation" placeholder="Açıklama*" dodi-required-text="Açıklama alanını boş bırakılamaz"></textarea>
+    </div>
+
+    <div class="RememberMe">
+        <div class="ChackRadioContainer">
+            <label for="errorContainer1">
+                <input type="checkbox" class="DodiValidation" id="errorContainer1" CheckCatch="errorContainer1" dodi-required-text="işleme devam edebilmek için checkle">
+                <span class="checkmark"></span>
+                Beni hatırla</label>
+
+        </div>
+    </div>
+
+
+    <div id="checkbox-list1" dodi-required-text="Please select at least one option">
+        <label>Checkbox List:</label>
+        <input type="checkbox" class="DodiValidation" name="checkbox-list1[4]" MultiCheckCatch="checkbox-list1" value="option4"> Option 1
+        <input type="checkbox" class="DodiValidation" name="checkbox-list1[5]" MultiCheckCatch="checkbox-list1" value="option5"> Option 2
+        <input type="checkbox" class="DodiValidation" name="checkbox-list1[6]" MultiCheckCatch="checkbox-list1" value="option6"> Option 3
+    </div>
+
+    <div id="radio-list1" dodi-required-text="Please select at least one option">
+        <label>Radio List:</label>
+        <input type="radio" name="radiolist1" class="DodiValidation" value="option4" dodi-alert="radio-list1"> Option 1
+        <input type="radio" name="radiolist1" class="DodiValidation" value="option5" dodi-alert="radio-list1"> Option 2
+        <input type="radio" name="radiolist1" class="DodiValidation" value="option6" dodi-alert="radio-list1"> Option 3
+    </div>
+
+   
+    <div class="FormLine">
+        <input type="file" class="DodiValidation" dodi-required-text="Lütfen bir seçenek belirleyiniz" 
+        file-type="\\.pdf|\\.docx|\\.dmg" file-type-text="Lütfen yalnızca PDF veya DOCX dosyası yükleyin."
+        max-file-size="1" max-file-size-text="Dosya boyutu en fazla 2 MB olabilir">
+    </div>
+
+
+    <div class="FormLine">
+        <input type="email" class="DodiValidation" placeholder="E-posta"
+            dodi-email-text="Lütfen mail adresinizi doğru giriniz"
+            dodi-required-text="Email alanını boş bırakılamaz">
+    </div>
+    <div class="FormLine position-relative">
+        <input type="password" dodi-repasword="1" placeholder="Şifre" class="DodiValidation PasswordLogin"
+            dodi-required-text="Şifre alanını boş bırakılamaz" minlength="8"
+            dodi-length-text="Şifreniz az 8 haneli olmalıdır">
+    </div>
+
+    <div class="FormLine position-relative">
+            <input type="password" dodi-repasword="2" placeholder="Şifre" dodi-repassword-text="Şifreler birbiri ile eşleşmiyor" class="DodiValidation PasswordLogin"
+            dodi-required-text="Şifre alanını boş bırakılamaz" minlength="8"
+            dodi-length-text="Şifreniz az 8 haneli olmalıdır">
+    </div>
+    <div>
+        <input type="date" class="DodiValidation" dodi-required-text="Tarih alanını boş bırakılamaz">
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <input type="submit" value="Giriş Yap" class="Btn Gray">
+    </div>
+</div>
+</form>
+    <script src="dodivalidation.js"></script>
+    
 </body>
-
 </html>
